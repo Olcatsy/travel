@@ -1,0 +1,380 @@
+/* ----Colors----
+#005769 - Dark Blue
+#16D6D1 - Light Blue
+#333 - Dark Grey
+#777 - Medium Grey
+#F6F8FA - Light Grey
+----End of Colors---- */
+
+
+
+/* THINGS TO DO
+-change margins to % (?)
+-convert widths into max/min widths
+-make the code dryer
+
+-work out transitions
+-make responsive (time permitting)
+-add a drop down menu (time permitting)
+*/
+
+/* NORMALIZE */
+html{line-height:1.15;-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%}body{margin:0}article,aside,footer,header,nav,section{display:block}h1{font-size:2em;margin:.67em 0}figcaption,figure,main{display:block}figure{margin:1em 40px}hr{box-sizing:content-box;height:0;overflow:visible}pre{font-family:monospace,monospace;font-size:1em}a{background-color:transparent;-webkit-text-decoration-skip:objects}abbr[title]{border-bottom:none;text-decoration:underline;text-decoration:underline dotted}b,strong{font-weight:inherit}b,strong{font-weight:bolder}code,kbd,samp{font-family:monospace,monospace;font-size:1em}dfn{font-style:italic}mark{background-color:#ff0;color:#000}small{font-size:80%}sub,sup{font-size:75%;line-height:0;position:relative;vertical-align:baseline}sub{bottom:-.25em}sup{top:-.5em}audio,video{display:inline-block}audio:not([controls]){display:none;height:0}img{border-style:none}svg:not(:root){overflow:hidden}button,input,optgroup,select,textarea{font-family:sans-serif;font-size:100%;line-height:1.15;margin:0}button,input{overflow:visible}button,select{text-transform:none}button,html [type=button],[type=reset],[type=submit]{-webkit-appearance:button}button::-moz-focus-inner,[type=button]::-moz-focus-inner,[type=reset]::-moz-focus-inner,[type=submit]::-moz-focus-inner{border-style:none;padding:0}button:-moz-focusring,[type=button]:-moz-focusring,[type=reset]:-moz-focusring,[type=submit]:-moz-focusring{outline:1px dotted ButtonText}fieldset{padding:.35em .75em .625em}legend{box-sizing:border-box;color:inherit;display:table;max-width:100%;padding:0;white-space:normal}progress{display:inline-block;vertical-align:baseline}textarea{overflow:auto}[type=checkbox],[type=radio]{box-sizing:border-box;padding:0}[type=number]::-webkit-inner-spin-button,[type=number]::-webkit-outer-spin-button{height:auto}[type=search]{-webkit-appearance:textfield;outline-offset:-2px}[type=search]::-webkit-search-cancel-button,[type=search]::-webkit-search-decoration{-webkit-appearance:none}::-webkit-file-upload-button{-webkit-appearance:button;font:inherit}details,menu{display:block}summary{display:list-item}canvas{display:inline-block}template{display:none}[hidden]{display:none}
+
+.clearfix:after {visibility: hidden; display: block; font-size: 0; content: ''; clear: both; height: 0; }
+
+html { -moz-box-sizing: border-box; -webkit-box-sizing: border-box; box-sizing: border-box;}
+
+*, *:before, *:after {box-sizing: inherit}
+
+.sr-only { position: absolute; width: 1px; height: 1px; margin: -1px; border: 0; padding: 0; white-space: nowrap; clip-path: inset(100%); clip: rect(0 0 0 0); overflow: hidden;}
+/* END OF NORMALIZE */
+
+
+/* BASE, STRIPPING & COMMON STYLES */
+html {
+    font-size: 62.5%;
+}
+
+body {
+    font-size: 1.6rem;
+    font-weight: 700;
+    font-family: "Raleway", sans-serif;
+    color: #333;
+    position: relative;
+}
+
+body,
+h1,
+h2,
+h3,
+ul,
+p {
+    margin: 0;
+    padding: 0;
+}
+
+h1 {
+    font-size: 6.8rem;
+}
+
+h2 {
+    font-size: 3.9rem;
+    margin: 40px 0;
+}
+
+ul {
+    list-style: none;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
+a {
+    display: inline-block;
+    text-decoration: none;
+    color: inherit;
+    font-size: 1.9rem; 
+}
+
+.container {
+    max-width: 1200px;
+    width: 90%;
+    margin: 0 auto;   
+}
+
+.logo a {
+    font-size: 3.8rem;
+    color: #005769;
+    transition: all 0.3s ease-in;
+}
+
+    .logo a:hover,
+    .logo a:focus {
+        color: #333;
+        
+    }
+
+.caps {
+    /* the class I put on everything caps */
+    text-transform: uppercase;
+}
+/* END OF BASE STYLES */
+
+
+
+
+/* ------HEADER------ */
+header {
+    padding-top: 45px;
+    position: absolute;
+    width: 100%;
+}
+
+header .flexParent {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+/* Nav */
+.header-nav {
+    /* nav menu takes up 40% of right side of the header */
+    width: 40%;
+}
+
+.main-menu {
+    /* the four items in the menu are separated evenly */
+    display: flex;
+    justify-content: space-evenly;
+    transition: all 0.3s ease-in;
+}
+
+.main-menu li {
+    /* anchor for submenu */
+    position: relative;
+    transition: all 0.3s ease-in;
+}
+
+    .main-menu li:hover,
+    .main-menu li:focus-within {
+        /* hover state of the menu items */
+        background-color: #16D6D1;
+        /* color: white; */
+        border-radius: 10px;
+    }
+
+.main-menu a {
+    padding: 10px 20px;
+}
+
+.sub-menu {
+    /* submenu is positioned under an item, bg matches the hover state of links. it's hidden when not hovered over */
+    position: absolute;
+    left: 0;
+    right: 0;
+    background-color: #16D6D1;
+    display: none;
+    /* separates two shapes with rounded corners: couldn't make it look good otherwise */
+    margin-top: 4px;
+    border-radius: 10px;
+    transition: all 0.3s ease-in;
+}
+
+    .main-menu li:hover .sub-menu,
+    .main-menu li:focus-within .sub-menu {
+        /* when a menu item is hovered on, the submenu becomes visible */
+        display: block;
+        
+    }
+
+    .sub-menu li:hover,
+    .sub-menu li:focus-within {
+        /* hover state for submenu items */
+        background-color: #333;
+        color: white;
+
+    }
+/* End of Nav */
+/* ------END OF HEADER------ */
+
+
+
+/* -------MAIN-------- */
+/* HERO */
+.hero {
+    background: url(./assets/image-main.jpeg);
+    background-size: cover;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+}
+
+.hero .inner-container {
+    max-width: 55%;
+}
+
+
+/* End of HERO*/
+
+
+/* CONTENT */
+.content {
+    padding: 120px 0;
+}
+
+.content .flexParent {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+
+/* I'll try switching to max- or min-width for these elements if i have time. For now i'm happy with the layout */
+.img,
+.feature-article,
+.overlay-article {
+    margin: 15px 0;
+}
+
+/* Images */
+.img {
+    width: calc(35% - 15px);
+}
+
+/* Feature Articles */
+.feature-article {
+    width: calc(65% - 15px);
+    background-color: #F6F8FA;
+    /* bg image takes up upper half of the element */
+    background-size: 100% 50%;
+    background-repeat: no-repeat;
+
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+}
+
+.feature-article-inner {
+    /* text takes up lower half of the element */
+    height: 50%;
+    padding: 0 15%;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.feature-first {
+    background-image: url(./assets/image-2.jpeg);
+}
+
+ .feature-second {
+    background-image: url(./assets/image-3.jpeg);
+}
+
+.feature-article .tag {
+    font-size: 2.2rem;
+    color: #777;
+}
+
+.read-more {
+    background: #16D6D1;
+    padding: 10px;
+    width: 150px;
+    border-radius: 10px;
+    transition: all 0.3s ease-in;
+}
+
+    .read-more:hover,
+    .read-more:focus {
+        background: #333;
+        color: white;
+    }
+
+    .read-more:active {
+        background: #414040
+    }
+
+/* Overlay Articles */
+.overlay-article {
+    width: calc(100% /3 - 15px);
+    position: relative;
+    transition: all 0.3s ease-in;
+}
+
+.overlay-article:hover .overlay-content {
+        opacity: 1;
+    }
+
+.overlay-content {
+    position: absolute;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(255, 255, 255, 0.6);
+    padding: 0 15%;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+
+    opacity: 0;
+    transition: all 0.4s ease-in;
+}
+/* End of CONTENT */
+/* ------END OF MAIN----- */
+
+
+
+/* ------FOOTER------- */
+footer {
+    background-color: #F6F8FA;
+}
+
+footer p {
+    font-size: 2rem;
+    font-weight: 500;
+    line-height: 1.6;
+}
+
+.footer-top {
+    display: flex;
+    padding: 60px 0;
+}
+
+.footer-top ul {
+    display: flex;
+    flex-direction: column;
+}
+
+/* the logo and the about copy each take up a third of the footer */
+.footer-top .logo,
+.about {
+    width: 33%;
+}
+
+/* the footer nav and social each take up one sixth of the footer */
+.footer-nav,
+.social {
+    width: calc(15.15% - 40px);
+}
+
+.footer-nav a,
+.social a {
+    padding: 10px 20px;
+    transition: all 0.3s ease-in;
+}
+    /* different hover states because FUN */
+    .footer-nav a:hover,
+    .footer-nav a:focus {
+        /* I'm styling the hover state for the footer nav to look similar to header nav */
+        background: #16D6D1;
+        border-radius: 10px;
+    }
+
+    .social a:hover,
+    .social a:focus {
+        color: #16D6D1;
+    }
+
+.footer-nav,
+.social,
+.about {
+   margin: 0 20px; 
+}
+
+.copyright {
+    border-top: 1px solid #777;
+    color: #777;
+    padding: 15px 0;
+}
+
+/* -------END OF FOOTER------- */
